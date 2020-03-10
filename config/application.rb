@@ -1,7 +1,5 @@
 require_relative 'boot'
-
 require "rails"
-
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"
@@ -29,6 +27,15 @@ module Team2GrogBotApi
           expose: %w(access-token expiry token-type uid client),
           max_age: 0
       end
+    end
+
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+      generate.helper_specs false
+      generate.routing_specs false
+      generate.controller_specs false
     end
   end
 end
