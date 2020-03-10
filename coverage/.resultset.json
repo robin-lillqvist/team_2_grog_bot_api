@@ -1,0 +1,39 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/emma-mariathalen/craftAcademy/team_2_grog_bot_api/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/emma-mariathalen/craftAcademy/team_2_grog_bot_api/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/emma-mariathalen/craftAcademy/team_2_grog_bot_api/app/jobs/application_job.rb": [
+        0,
+        null,
+        0
+      ],
+      "/Users/emma-mariathalen/craftAcademy/team_2_grog_bot_api/app/controllers/application_controller.rb": [
+        0,
+        0
+      ],
+      "/Users/emma-mariathalen/craftAcademy/team_2_grog_bot_api/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/emma-mariathalen/craftAcademy/team_2_grog_bot_api/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1583844149
+  }
+}
