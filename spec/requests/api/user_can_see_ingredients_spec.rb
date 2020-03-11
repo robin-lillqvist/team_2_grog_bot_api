@@ -1,6 +1,6 @@
 RSpec.describe Api::IngredientsController, type: :request do
     
-    describe "successfully GET /ingredients" do
+    describe "GET /api/ingredients" do
         before do
             get "/api/ingredients"
         end
