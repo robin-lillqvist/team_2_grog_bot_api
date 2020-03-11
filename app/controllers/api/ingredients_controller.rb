@@ -23,6 +23,6 @@ class Api::IngredientsController < ApplicationController
   ]
   
   def index  
-    render json: { ingredients: API::IngredientsController.AVAILABLE_INGREDIENTS }
+    render json: { ingredients: AVAILABLE_INGREDIENTS }
   end
 end
