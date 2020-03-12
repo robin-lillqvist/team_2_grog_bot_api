@@ -8,8 +8,8 @@ class Api::CocktailsController < ApplicationController
         }
       }
     )
-    if response.body == ""
-      render json: {error: "No drinks were found"}, status: 400
+    if response.body == { "drinks": "None Found" } 
+      render json: {error: "No drinks were found"}
     else
       results = JSON.parse(response)
       render json: {drinks: results["drinks"]}
