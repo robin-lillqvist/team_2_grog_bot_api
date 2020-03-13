@@ -25,13 +25,6 @@ RSpec.configure do |config|
   config.include ResponseJSON
   config.before do
     stub_request(:get, %r{https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?}).
-         with(
-           headers: {
-       	  'Accept'=>'*/*',
-       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       	  'Host'=>'www.thecocktaildb.com',
-       	  'User-Agent'=>'rest-client/2.1.0 (darwin19.2.0 x86_64) ruby/2.5.1p57'
-           }).
-         to_return(status: 200, body: file_fixture("cocktails_api_lime_juice_response.json").read, headers: {})
+      to_return(status: 200, body: file_fixture("cocktails_api_lime_juice_response.json").read, headers: {})
   end
 end

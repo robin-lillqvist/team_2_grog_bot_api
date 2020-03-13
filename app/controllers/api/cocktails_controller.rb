@@ -4,15 +4,15 @@ class Api::CocktailsController < ApplicationController
       "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php",
       {
         params: {
-          i: params[:q]
-        }
+          i: params[:q],
+        },
       }
     )
-    if response.body == { "drinks": "None Found" } 
-      render json: {error: "No drinks were found"}
+    if response.body == { "drinks": "None Found" }
+      render json: { error: "No drinks were found" }
     else
       results = JSON.parse(response)
-      render json: {drinks: results["drinks"]}
+      render json: { drinks: results["drinks"] }
     end
   end
 end

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 RSpec.describe Api::CocktailsController, type: :request do
   describe "GET /api/cocktails successfully" do
     before do
       get "/api/cocktails",
-          params: {
-            q: "Lemon_juice",
-          }
+        params: {
+          q: "Lime_juice",
+        }
     end
     it "returns a 200 status" do
       expect(response.status).to eq 200
