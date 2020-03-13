@@ -15,4 +15,19 @@ RSpec.describe Api::CocktailsController, type: :request do
       expect(response_json["drinks"].first["strDrink"]).to eq "Absolut myz"
     end
   end
+
+  describe "GET /api/cocktails successfully" do
+    before do
+      get "/api/cocktails",
+        params: {
+          q: "Lingondrick",
+        }
+    end
+    it "returns a 422 status" do
+      expect(response.status).to eq 422
+    end
+    it "returns error message" do
+      expect(response_json["message"]).to eq "You can not choose this ingredient"
+    end
+  end
 end
