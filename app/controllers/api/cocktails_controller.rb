@@ -11,6 +11,7 @@ class Api::CocktailsController < ApplicationController
     )
     results = JSON.parse(response)
       render json: { drinks: results["drinks"] }
+      binding.pry
     else
     render json: { message: "You can not choose this ingredient" }, status: 422
     end

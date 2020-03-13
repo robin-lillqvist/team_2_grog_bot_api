@@ -5,7 +5,7 @@ RSpec.describe Api::CocktailsController, type: :request do
     before do
       get "/api/cocktails",
         params: {
-          q: "Lime_juice",
+          q: "Lime juice",
         }
     end
     it "returns a 200 status" do
