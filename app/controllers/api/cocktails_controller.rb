@@ -4,8 +4,8 @@ class Api::CocktailsController < ApplicationController
       "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php",
       {
         params: {
-          i: params[:q],
-        },
+          i: params[:q]
+        }
       }
     )
     if response.body == { "drinks": "None Found" }
