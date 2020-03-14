@@ -5,8 +5,8 @@ class Api::CocktailsController < ApplicationController
         "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php",
         {
           params: {
-            i: params[:q],
-          },
+            i: params[:q]
+          }
         }
       )
       results = JSON.parse(response)
@@ -21,8 +21,8 @@ class Api::CocktailsController < ApplicationController
       "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php",
       {
         params: {
-          i: params[:id],
-        },
+          i: params[:id]
+        }
       }
     )
     results = JSON.parse(response)
