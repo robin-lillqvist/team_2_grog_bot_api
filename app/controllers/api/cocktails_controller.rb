@@ -26,6 +26,10 @@ class Api::CocktailsController < ApplicationController
       }
     )
     results = JSON.parse(response)
-    render json: { drink: results["drinks"].first }
+    if results["drinks"].first['idDrink'] == params[:id]
+      render json: { drink: results["drinks"].first }
+    else
+      render json: { message: "Oops, we could not find this cocktail" }, status: 422
+    end
   end
 end
