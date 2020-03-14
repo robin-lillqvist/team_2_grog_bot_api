@@ -26,39 +26,40 @@ class Api::CocktailsController < ApplicationController
       }
     )
     results = JSON.parse(response)
-    sanitized_drink =
+    sanitized_cocktail = results['drinks'].map { |cocktail|
       {
-        id: results["drinks"].first["idDrink"],
-        name: results["drinks"].first["strDrink"],
-        category: results["drinks"].first["strCategory"],
-        glass: results["drinks"].first["strGlass"],
-        instructons: results["drinks"].first["strInstructions"],
-        image: results["drinks"].first["strDrinkThumb"],
+        id: cocktail["idDrink"],
+        name: cocktail["strDrink"],
+        category: cocktail["strCategory"],
+        glass: cocktail["strGlass"],
+        instructons: cocktail["strInstructions"],
+        image: cocktail["strcocktailThumb"],
         ingredients: [
-          { name: results["drinks"].first["strIngredient1"],
-            measure: results["drinks"].first["strMeasure1"] },
-          { name: results["drinks"].first["strIngredient2"],
-            measure: results["drinks"].first["strMeasure2"] },
-          { name: results["drinks"].first["strIngredient3"],
-            measure: results["drinks"].first["strMeasure3"] },
-          { name: results["drinks"].first["strIngredient4"],
-            measure: results["drinks"].first["strMeasure4"] },
-          { name: results["drinks"].first["strIngredient5"],
-            measure: results["drinks"].first["strMeasure5"] },
-          { name: results["drinks"].first["strIngredient6"],
-            measure: results["drinks"].first["strMeasure6"] },
-          { name: results["drinks"].first["strIngredient7"],
-            measure: results["drinks"].first["strMeasure7"] },
-          { name: results["drinks"].first["strIngredient8"],
-            measure: results["drinks"].first["strMeasure8"] },
-          { name: results["drinks"].first["strIngredient9"],
-            measure: results["drinks"].first["strMeasure9"] },
-          { name: results["drinks"].first["strIngredient10"],
-            measure: results["drinks"].first["strMeasure10"] },
+          { name: cocktail["strIngredient1"],
+            measure: cocktail["strMeasure1"] },
+          { name: cocktail["strIngredient2"],
+            measure: cocktail["strMeasure2"] },
+          { name: cocktail["strIngredient3"],
+            measure: cocktail["strMeasure3"] },
+          { name: cocktail["strIngredient4"],
+            measure: cocktail["strMeasure4"] },
+          { name: cocktail["strIngredient5"],
+            measure: cocktail["strMeasure5"] },
+          { name: cocktail["strIngredient6"],
+            measure: cocktail["strMeasure6"] },
+          { name: cocktail["strIngredient7"],
+            measure: cocktail["strMeasure7"] },
+          { name: cocktail["strIngredient8"],
+            measure: cocktail["strMeasure8"] },
+          { name: cocktail["strIngredient9"],
+            measure: cocktail["strMeasure9"] },
+          { name: cocktail["strIngredient10"],
+            measure: cocktail["strMeasure10"] },
         ],
       }
+    }
     if results["drinks"].first["idDrink"] == params[:id]
-      render json: { drink: sanitized_drink }
+      render json: { drink: sanitized_cocktail }
     else
       render json: { message: "Oops, we could not find this cocktail" }, status: 422
     end
