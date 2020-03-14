@@ -9,7 +9,7 @@ RSpec.describe Api::CocktailsController, type: :request do
     end
 
     it "returns name of drink" do
-      expect(response_json["drink"]["strDrink"]).to eq "Sex on the Beach"
+      expect(response_json['drink']['name']).to eq "Sex on the Beach"
     end
   end
 
