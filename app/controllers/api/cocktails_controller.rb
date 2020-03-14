@@ -15,4 +15,17 @@ class Api::CocktailsController < ApplicationController
       render json: { message: "You can not choose this ingredient" }, status: 422
     end
   end
+
+  def show
+    response = RestClient.get(
+      "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php",
+      {
+        params: {
+          i: params[:id],
+        },
+      }
+    )
+    results = JSON.parse(response)
+    render json: { drink: results["drinks"].first }
+  end
 end

@@ -1,9 +1,6 @@
 RSpec.describe Api::CocktailsController, type: :request do
   before do
-    get "/api/cocktails",
-    params: {
-      q: "12754",
-    }
+    get "/api/cocktails/12754"
   end
 
   it "returns a 200 status" do
@@ -11,6 +8,6 @@ RSpec.describe Api::CocktailsController, type: :request do
   end
 
   it "returns name of drink" do
-    expect(response_json["drinks"]["strDrink"]).to eq "Sex on the Beach"
+    expect(response_json["drink"]["strDrink"]).to eq "Sex on the Beach"
   end
 end
