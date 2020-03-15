@@ -3,7 +3,7 @@ RSpec.describe Api::AlcoholsController, type: :request do
     before do
       get "/api/alcohols",
       params: {
-        q: "Gin"
+        q: "Mörk rom"
       }
     end
 
@@ -12,11 +12,10 @@ RSpec.describe Api::AlcoholsController, type: :request do
     end
 
     it "should return a list of alcohols" do
-      expect(response_json["alcohols"].first["ProductNameBold"]).to eq "AB Stockholms Bränneri"
+      expect(response_json["alcohols"].first["ProductNameBold"]).to eq "A-Bay Spirit"
     end
 
     it "should return a swedish alcohol only" do
-      binding.pry
       expect(response_json["alcohols"].first["Country"]).to eq "Sverige"
       expect(response_json["alcohols"].last["Country"]).to eq "Sverige"
     end

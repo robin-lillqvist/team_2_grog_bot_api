@@ -1,8 +1,8 @@
 require "coveralls"
 Coveralls.wear_merged!("rails")
 require "webmock/rspec"
-# WebMock.enable!
-WebMock.allow_net_connect!
+WebMock.enable!
+# WebMock.allow_net_connect!
 
 ENV["RAILS_ENV"] ||= "test"
 
@@ -29,5 +29,7 @@ RSpec.configure do |config|
       to_return(status: 200, body: file_fixture("cocktails_api_lime_juice_response.json").read, headers: {})
     stub_request(:get, %r{https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?}).
       to_return(status: 200, body: file_fixture("cocktails_api_id_12754_response.json").read, headers: {})
+    stub_request(:get, %r{https://www.systembolaget.se/api/productsearch/search/sok-dryck?}).
+      to_return(status: 200, body: file_fixture("alcohols_api_mörk_rom_response.json").read, headers: {})
   end
 end
