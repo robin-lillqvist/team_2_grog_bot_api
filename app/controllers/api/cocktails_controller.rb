@@ -42,7 +42,7 @@ class Api::CocktailsController < ApplicationController
     end
 
     sanitized_cocktail =
-      [{
+      {
         id: cocktail["idDrink"],
         name: cocktail["strDrink"],
         category: cocktail["strCategory"],
@@ -50,7 +50,7 @@ class Api::CocktailsController < ApplicationController
         instructions: cocktail["strInstructions"],
         image: cocktail["strDrinkThumb"],
         ingredients: ingredients
-      }]
+      }
     if results["drinks"].first["idDrink"] == params[:id]
       render json: { drink: sanitized_cocktail }
     else
