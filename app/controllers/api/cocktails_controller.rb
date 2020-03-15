@@ -32,7 +32,7 @@ class Api::CocktailsController < ApplicationController
         name: cocktail["strDrink"],
         category: cocktail["strCategory"],
         glass: cocktail["strGlass"],
-        instructons: cocktail["strInstructions"],
+        instructions: cocktail["strInstructions"],
         image: cocktail["strDrinkThumb"],
         ingredients: [
           { name: cocktail["strIngredient1"],
