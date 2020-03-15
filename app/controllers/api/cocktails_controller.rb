@@ -5,8 +5,8 @@ class Api::CocktailsController < ApplicationController
         "https://www.thecocktaildb.com/api/json/v2/9973533/filter.php",
         {
           params: {
-            i: params[:q],
-          },
+            i: params[:q]
+          }
         }
       )
       results = JSON.parse(response)
@@ -21,12 +21,27 @@ class Api::CocktailsController < ApplicationController
       "https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php",
       {
         params: {
-          i: params[:id],
-        },
+          i: params[:id]
+        }
       }
     )
     results = JSON.parse(response)
-    sanitized_cocktail = results['drinks'].map { |cocktail|
+    cocktail = results["drinks"].first
+
+    ingredients = []
+    cocktail.select do |key, value|
+      next unless key.to_s.start_with? "strIngredient"
+      ingredient = {}
+      number = key.to_s.scan(/\d+$/).first
+      ingredient[:name] = value unless value.nil?
+      cocktail.select do |key_2, value_2|
+        next unless key_2.to_s.start_with? "strMeasure"
+        ingredient[:measure] = value_2 if key_2.to_s.scan(/\d+$/).first == number && value != nil
+      end
+      ingredients.push(ingredient) unless ingredient.empty?
+    end
+
+    sanitized_cocktail =
       {
         id: cocktail["idDrink"],
         name: cocktail["strDrink"],
@@ -34,30 +49,8 @@ class Api::CocktailsController < ApplicationController
         glass: cocktail["strGlass"],
         instructions: cocktail["strInstructions"],
         image: cocktail["strDrinkThumb"],
-        ingredients: [
-          { name: cocktail["strIngredient1"],
-            measure: cocktail["strMeasure1"] },
-          { name: cocktail["strIngredient2"],
-            measure: cocktail["strMeasure2"] },
-          { name: cocktail["strIngredient3"],
-            measure: cocktail["strMeasure3"] },
-          { name: cocktail["strIngredient4"],
-            measure: cocktail["strMeasure4"] },
-          { name: cocktail["strIngredient5"],
-            measure: cocktail["strMeasure5"] },
-          { name: cocktail["strIngredient6"],
-            measure: cocktail["strMeasure6"] },
-          { name: cocktail["strIngredient7"],
-            measure: cocktail["strMeasure7"] },
-          { name: cocktail["strIngredient8"],
-            measure: cocktail["strMeasure8"] },
-          { name: cocktail["strIngredient9"],
-            measure: cocktail["strMeasure9"] },
-          { name: cocktail["strIngredient10"],
-            measure: cocktail["strMeasure10"] },
-        ],
+        ingredients: ingredients
       }
-    }
     if results["drinks"].first["idDrink"] == params[:id]
       render json: { drink: sanitized_cocktail }
     else
