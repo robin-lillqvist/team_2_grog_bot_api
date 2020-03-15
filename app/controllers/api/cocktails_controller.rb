@@ -36,7 +36,7 @@ class Api::CocktailsController < ApplicationController
       ingredient[:name] = value unless value.nil?
       cocktail.select do |key_2, value_2|
         next unless key_2.to_s.start_with? "strMeasure"
-        ingredient[:measure] = value_2 if key_2.to_s.scan(/\d+$/).first == number && value != nil
+        ingredient[:measure] = convert(value_2) if key_2.to_s.scan(/\d+$/).first == number && value != nil
       end
       ingredients.push(ingredient) unless ingredient.empty?
     end
@@ -56,5 +56,19 @@ class Api::CocktailsController < ApplicationController
     else
       render json: { message: "Oops, we could not find this cocktail" }, status: 422
     end
-  end
+	end
+
+
+	private
+
+	def convert(measurement)
+		return if measurement.nil?
+		parsed_measurement = Measurement.parse(measurement)
+		if parsed_measurement.unit.name == 'oz'
+			converted_measurement = Unitwise(parsed_measurement.quantity, 'oz fl').to_centiliter.round(0)
+		else
+			converted_measurement = measurement
+		end
+			converted_measurement.to_s
+	end
 end
