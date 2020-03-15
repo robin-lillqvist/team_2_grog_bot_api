@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
     "Lemon juice", 
     "Coffee", 
     "Lime", 
-    "Lemon", 
+    "Soda Water", 
     "Orange", 
     "Pineapple juice", 
     "Tonic Water", 
