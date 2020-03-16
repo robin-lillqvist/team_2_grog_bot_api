@@ -14,8 +14,7 @@ gem 'unitwise'
 group :development, :test do
   gem 'webmock'
   gem 'coveralls', require: false
-  gem 'pry-rails'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
