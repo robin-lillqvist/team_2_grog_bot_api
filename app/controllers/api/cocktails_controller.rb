@@ -3,7 +3,7 @@
 class Api::CocktailsController < ApplicationController
 
 	before_action :get_cocktail_by_id, only: :show
-	
+
   def index
     if AVAILABLE_INGREDIENTS.include? params[:q]
       results = CocktailApiService.get_by_ingredient(params[:q])
@@ -15,7 +15,7 @@ class Api::CocktailsController < ApplicationController
 
   def show
     sanitized_cocktail = format_cocktail(@cocktail)
-    if @cocktail['idDrink'] == params[:id]
+		if @cocktail['idDrink'] == params[:id]
       render json: { drink: sanitized_cocktail }
     else
       render json: { message: 'Oops, we could not find this cocktail' }, status: 422

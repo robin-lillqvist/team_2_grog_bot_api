@@ -14,7 +14,7 @@ RSpec.describe Api::CocktailsController, type: :request do
       expect(response_json['drink']['name']).to eq 'Sex on the Beach'
     end
 
-    it 'returns measurement as centiliters' do
+		it 'returns measurement as centiliters' do
       expect(response_json['drink']['ingredients'].first['measure']).to eq '3 centiliter'
     end
   end
