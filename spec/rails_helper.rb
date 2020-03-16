@@ -2,7 +2,6 @@ require "coveralls"
 Coveralls.wear_merged!("rails")
 require "webmock/rspec"
 WebMock.enable!
-# WebMock.allow_net_connect!
 
 ENV["RAILS_ENV"] ||= "test"
 
