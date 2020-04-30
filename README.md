@@ -1,4 +1,7 @@
 ### Authors
+[![Build Status](https://semaphoreci.com/api/v1/emtalen/team_2_grog_bot_api/branches/development/shields_badge.svg)](https://semaphoreci.com/emtalen/team_2_grog_bot_api)
+[![Build Status](https://semaphoreci.com/api/v1/emtalen/team_2_grog_bot_api/branches/development/badge.svg)](https://semaphoreci.com/emtalen/team_2_grog_bot_api)
+
 [Robin Lillqvist](https://github.com/robin-lillqvist)  
 [Emma-Maria Thalen](https://github.com/emtalen)  
 [Johan Bons](https://github.com/johanbounce)  
